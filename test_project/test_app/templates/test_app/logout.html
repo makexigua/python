@@ -1,0 +1,12 @@
+{% extends "test_app/base.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <h2>你已成功退出</h2>
+        <div>
+            <small>
+                <a href="{% url 'login' %}">重新登录</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}

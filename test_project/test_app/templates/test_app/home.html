@@ -1,0 +1,15 @@
+{% extends "test_app/base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'post-create' %}">写新文章</a>
+    {% endif %}
+
+    {% for post in posts %}
+        <article>
+                <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                <p>作者: {{ post.author }} | 发布时间: {{ post.date_posted }}</p>
+                <p>{{ post.content|truncatewords:30 }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}

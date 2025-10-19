@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Blog</a></h1>
+        <nav>
+            {% if user.is_authenticated %}
+                <span>欢迎, {{ user.username }}</span>
+                <a href="{% url 'post-create' %}">写文章</a>
+                <a href="{% url 'logout' %}">退出</a>
+            {% else %}
+                <a href="{% url 'login' %}">登录</a>
+                <a href="{% url 'register' %}">注册</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "test_app/base.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>发布新文章</legend>
+                {{ form.as_p }}
+            </fieldset>
+            <div>
+                <button type="submit">发布</button>
+                <button type="reset">重置</button>
+                <a href="{% url 'blog-home' %}" class="btn btn-outline-secondary">取消</a>
+
+<script>
+document.querySelector('.js-redirect').addEventListener('click', function() {
+    window.location.href = this.dataset.url;
+});
+</script>
+            </div>
+        </form>
+    </div> 
+{% endblock %}
